@@ -1,0 +1,39 @@
+# Test files
+test/
+model/
+
+# Development files
+.git/
+.gitignore
+.npmignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Lock files (keep pnpm-lock.yaml for reference, but don't publish)
+pnpm-lock.yaml
+
+# Temporary files
+*.tmp
+*.temp
+*.glb
+*.gltf
+*.fbx
+inspect_*.json
+comparison.json
+temp_*.glb
+
+
+
+
