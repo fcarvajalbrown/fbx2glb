@@ -1,0 +1,23 @@
+graph LR
+    subgraph Execution
+        main[main.js]
+    end
+
+    subgraph Logic_Layer
+        index[index.js]
+        conv[converter.js]
+        util[util.js]
+    end
+
+    subgraph Optimization_Layer
+        comp[compressor.js]
+        res[resizer.js]
+    end
+
+    %% Flow
+    main --> index
+    index --> conv
+    conv --> util
+    conv --> comp
+    conv --> res
+    comp -.-> res

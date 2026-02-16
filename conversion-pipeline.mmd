@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant U as User
+    participant CLI as CLI (main.js)
+    participant Lib as Transformation Logic (lib)
+    participant G as glTF-Transform
+    participant FS as Local Filesystem
+
+    U->>CLI: fbx2glb input.fbx -o output.glb --draco
+    CLI->>FS: Check for file existence
+    FS-->>CLI: File Path Validated
+    
+    Note over CLI, Lib: Initialization
+    CLI->>Lib: Initialize Document
+    
+    rect rgb(240, 240, 240)
+        Note right of Lib: Transformation Pipeline
+        Lib->>G: Load / Parse FBX
+        Lib->>G: Apply Texture Resizing (Sharp)
+        Lib->>G: Apply Draco Compression
+        Lib->>G: Optimize Geometry (dedup/prune)
+    end
+
+    Lib->>FS: Write binary GLB data
+    FS-->>U: Conversion Complete (.glb)
